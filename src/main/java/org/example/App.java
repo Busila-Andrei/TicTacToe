@@ -7,6 +7,8 @@ package org.example;
 public class App 
 {
     public static void main(String[] args) {
-        new TicTac();
+
+        Game game = new Game();
+        game.start();
     }
 }
