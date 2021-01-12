@@ -1,4 +1,4 @@
-package org.example.utils;
+package org.example.controller.utils;
 
 import java.util.Scanner;
 

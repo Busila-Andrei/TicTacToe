@@ -1,4 +1,4 @@
-package org.example;
+package org.example.domain;
 
 public class Board {
 
@@ -22,6 +22,8 @@ public class Board {
         }
         System.out.println("---------");
     }
+
+
 
     public char[][] getBoard() {
         return board;

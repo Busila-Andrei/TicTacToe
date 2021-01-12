@@ -1,27 +1,33 @@
-package org.example;
+package org.example.service;
 
-import org.example.utils.ScannerUtils;
+import org.example.controller.utils.ScannerUtils;
+import org.example.domain.Board;
+import org.example.domain.Result;
 
-public class Game {
+public class Menu {
 
-    private final Board board = new Board();
-    private final User user1 = new User('X');
-    private final User user2 = new User('O');
+    private final Board board;
+    char user1;
+    char user2;
     private final Result result = new Result();
 
-    public void start(){
+
+    public Menu(){
+        this.user1 = 'X';
+        this.user2 = 'O';
+        this.board = new Board();
         board.printBoard();
-        logicGame();
+        logicApp();
     }
 
-    public void logicGame(){
+    public void logicApp(){
         for(;;){
-            input(user1.getCharacter());
+            inputUser(user1);
             board.printBoard();
             if (result.gameResult(board.getBoard())){
                 break;
             }
-            input(user2.getCharacter());
+            inputUser(user2);
             board.printBoard();
             if (result.gameResult(board.getBoard())){
                 break;
@@ -30,7 +36,7 @@ public class Game {
         }
     }
 
-    public void input(char character){
+    public void inputUser(char character){
         int i = 0, j = 0;
         for (; ; ) {
             System.out.print("Enter the coordinates: ");
@@ -42,7 +48,7 @@ public class Game {
             } catch (NumberFormatException e) {
                 System.out.println("You should enter numbers!");
             }
-            if (i > 3 || j > 3)
+            if (i > 3 || j > 3 || i < 1 || j < 1)
                 System.out.println("Coordinates should be from 1 to 3!");
             else if (board.getCordBoard(i-1,j-1) == ' ') {
                 board.setBoard(i-1,j-1,character);
