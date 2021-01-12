@@ -24,12 +24,12 @@ public class Menu {
         for(;;){
             inputUser(user1);
             board.printBoard();
-            if (result.gameResult(board.getBoard())){
+            if (result.gameResult(board.getBoard(),user1)){
                 break;
             }
             inputUser(user2);
             board.printBoard();
-            if (result.gameResult(board.getBoard())){
+            if (result.gameResult(board.getBoard(),user2)){
                 break;
             }
 

@@ -2,13 +2,13 @@ package org.example.domain;
 
 public class Result {
 
-    public boolean gameResult(char[][] board) {
+    public boolean gameResult(char[][] board,char userCharacter) {
 
-        if (winX(board)) {
+        if (win(board,userCharacter))
+        if (userCharacter == 'X'){
             System.out.println("X wins");
             return true;
-        }
-        else if (winO(board)) {
+        } else if (userCharacter == 'O') {
             System.out.println("O wins");
             return  true;
         }
@@ -19,52 +19,28 @@ public class Result {
         return false;
     }
 
-    public boolean winX(char[][] board) {
+    public boolean win(char[][] board, char userCharacter) {
         int i, j;
 
         j = 1;
         for (i = 0; i < 3; i++){
-            if (board[i][j-1] == 'X' && board[i][j] == 'X' && board[i][j+1] == 'X'){
+            if (board[i][j-1] == userCharacter && board[i][j] == userCharacter && board[i][j+1] == userCharacter){
                 return true;
             }
         }
 
         i = 1;
         for (j = 0; j < 3; j++){
-            if (board[i-1][j] == 'X' && board[i][j] == 'X' && board[i+1][j] == 'X'){
+            if (board[i-1][j] == userCharacter && board[i][j] == userCharacter && board[i+1][j] == userCharacter){
                 return true;
             }
         }
 
         i = 1;
         j = 1;
-        if (board[i-1][j-1] == 'X' && board[i][j] == 'X' && board[i+1][j+1] == 'X'){
+        if (board[i-1][j-1] == userCharacter && board[i][j] == userCharacter && board[i+1][j+1] == userCharacter){
             return true;
-        }else return board[i + 1][j - 1] == 'X' && board[i][j] == 'X' && board[i - 1][j + 1] == 'X';
-    }
-
-    public boolean winO(char[][] board) {
-        int i, j;
-
-        j = 1;
-        for (i = 0; i < 3; i++){
-            if (board[i][j-1] == 'O' && board[i][j] == 'O' && board[i][j+1] == 'O'){
-                return true;
-            }
-        }
-
-        i = 1;
-        for (j = 0; j < 3; j++){
-            if (board[i-1][j] == 'O' && board[i][j] == 'O' && board[i+1][j] == 'O'){
-                return true;
-            }
-        }
-
-        i = 1;
-        j = 1;
-        if (board[i-1][j-1] == 'O' && board[i][j] == 'O' && board[i+1][j+1] == 'O'){
-            return true;
-        }else return board[i + 1][j - 1] == 'O' && board[i][j] == 'O' && board[i - 1][j + 1] == 'O';
+        }else return board[i + 1][j - 1] == userCharacter && board[i][j] == userCharacter && board[i - 1][j + 1] == userCharacter;
     }
 
     public boolean draw(char[][] board){
